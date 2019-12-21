@@ -1,6 +1,6 @@
 name: joey_loading
-description: A new Flutter package project.
-version: 0.0.1
+description: A simple Loading package, supporting iOS, Android. For asynchronous scenarios such as network loading.
+version: 1.0.0
 author: Joey <332006721@qq.com>
 homepage: https://github.com/joeyczz/flutter_joey_loading
 

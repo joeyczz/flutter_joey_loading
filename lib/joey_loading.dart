@@ -5,15 +5,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:joey_loading/src/mask.dart';
 
-const Color defaultBackgroundColor = const Color(0xAA000000);
+const Color _defaultBackgroundColor = const Color(0xAA000000);
 
-final defautLoading = Center(
+final _defautLoading = Center(
   child: SpinKitCircle(
     color: Colors.white,
   ),
 );
 
 class Loading {
+  /// Loading show
+  ///
+  /// static method will help you show loading
+  ///
+  /// ```dart
+  /// Loading.show(context);
+  /// ```
+  ///
+  /// show loading with duration time & loading view widget
+  /// ```dart
+  /// Loading.show(
+  ///   context,
+  ///   duration: const Duration(seconds: 2),
+  ///   child: SpinKitCircle(
+  ///     color: Colors.red,
+  ///     size: 100,
+  ///   ),
+  /// );
+  /// ```
+  /// loading view will dismiss after duration
+  /// if duration is null it would not dismiss untill call Loading.dismiss();
   static void show(
     BuildContext context, {
     Duration duration,
@@ -28,6 +49,15 @@ class Loading {
     }
   }
 
+  /// Loading dismiss
+  ///
+  /// static method will help you close loading
+  ///
+  /// ```dart
+  /// Loading.dismiss();
+  /// ```
+  ///
+  /// the last loading view will dismiss after call Loading.dismiss()
   static void dismiss() {
     _Loading.dismiss();
   }
@@ -61,10 +91,10 @@ class _Loading {
 
     Paint paint = Paint();
     paint.strokeCap = StrokeCap.square;
-    paint.color = backgroundColor ?? defaultBackgroundColor;
+    paint.color = backgroundColor ?? _defaultBackgroundColor;
 
     // loading 视图
-    Widget _child = child ?? defautLoading;
+    Widget _child = child ?? _defautLoading;
 
     _overlayEntry = OverlayEntry(
       builder: (BuildContext _) => MaskWidget(
